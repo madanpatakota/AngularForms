@@ -1,52 +1,6 @@
-<div style="margin: 50px; padding: 50px">
-  <h3>Template driven approach</h3>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form #registraionForm="ngForm" ngForm>
-        <div>
-          <div class="form-group">
-            <label class="col-form-label">First Name *</label>
-            <input
-              name="userFirstName"
-              type="text"
-              placeholder="First name"
-              class="form-control"
-              ngModel
-              required
-              #firstName = "ngModel"
-            />
-          </div>
-        </div>
-        <small *ngIf="firstName.touched && firstName.invalid" 
-        style="color:red">Please enter first name</small>
+<app-template-driven></app-template-driven>
 
 
-        <div>
-          <div class="form-group">
-            <label class="col-form-label">Sir Name *</label>
-            <input
-              name="useSirName"
-              type="text"
-              placeholder="Sir name"
-              class="form-control"
-              ngModel
-              required
-              #sirName = "ngModel"
-            />
-          </div>
-        </div>
-        <small *ngIf="sirName.touched && sirName.invalid" 
-        style="color:red">Please enter Your Sir name</small>
+<hr>
 
-
-
-
-        
-
-        <div class="form-group mt-2">
-          <button [disabled]="registraionForm.invalid"  class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+<app-reactive-approach></app-reactive-approach>

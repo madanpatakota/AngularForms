@@ -1,0 +1,160 @@
+<div style="margin: 50px; padding: 50px">
+    <h3>Template driven approach</h3>
+  
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form #registraionForm="ngForm" ngForm>
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">First Name *</label>
+  
+              <!-- touched , untouched , pristine , dirty , valid or invalid -->
+              <!--HTML  required , minlength , maxlength , min , max , pattern, type validator -->
+              <input
+                name="userFirstName"
+                type="text"
+                placeholder="First name"
+                class="form-control"
+                ngModel
+                required
+                minlength="3"
+                #firstName="ngModel"
+              />
+            </div>
+          </div>
+          <!-- 
+  
+              data 
+            
+              data =  {fullname : 'John smith'}
+  
+                  quesitonMark
+              data?.fullname -- Johnsimth  -------- exception 
+  
+              if(data){
+                -----
+              }
+                else{
+                
+                }
+  
+              console.log(data) null
+              
+          -->
+  
+          <!-- i have to display below message is empty means required -->
+          <small
+            *ngIf="firstName.touched && firstName.errors?.['required']"
+            style="color: red"
+            >Please enter first name</small
+          >
+  
+          <!-- i have to display below message when your charcters below 3 -->
+          <small
+            *ngIf="firstName.touched && firstName.errors?.['minlength']"
+            style="color: red"
+          >
+            Please enter atleast 3 charcters</small
+          >
+  
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">Please enter email *</label>
+              <input
+                name="userEmailName"
+                type="text"
+                placeholder="Enter your email"
+                class="form-control"
+                ngModel
+                required
+                email
+                #userEmail="ngModel"
+              />
+            </div>
+          </div>
+          <small
+            *ngIf="userEmail.touched  && userEmail.errors?.['email']"
+            style="color: red"
+            >Please enter valid email</small
+          >
+  
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">Sir Name *</label>
+              <input
+                name="useSirName"
+                type="text"
+                placeholder="Sir name"
+                class="form-control"
+                ngModel
+                required
+                #sirName="ngModel"
+              />
+            </div>
+          </div>
+          <small
+            *ngIf="sirName.touched && sirName.errors?.['required']"
+            style="color: red"
+            >Please enter Your Sir name</small
+          >
+          <small
+            *ngIf="sirName.touched  && sirName.errors?.['maxlength']"
+            style="color: red"
+            >Do't be give more than 6 charcters</small
+          >
+  
+          <!-- <div>
+            <div class="form-group">
+              <label class="col-form-label">Sir Name *</label>
+              <input
+                name="useSirName"
+                type="text"
+                placeholder="Sir name"
+                class="form-control"
+                ngModel
+                required
+                #sirName="ngModel"
+              />
+            </div>
+          </div>
+          <small
+            *ngIf="sirName.touched && sirName.errors?.['required']"
+            style="color: red"
+            >Please enter Your Sir name</small
+          >
+          <small
+            *ngIf="sirName.touched  && sirName.errors?.['maxlength']"
+            style="color: red"
+            >Do't be give more than 6 charcters</small
+          > -->
+  
+          <div>
+            <div class="form-group">
+              <label class="col-form-label">Select option *</label>
+              <select name="choiceName" class="form-select"
+               #choice="ngModel" ngModel required>
+                <option value="" selected disabled>Select an option</option>
+                <option [value]="option.value" *ngFor="let option of optionsList">
+                  {{ option.name }}
+                </option>
+                <!-- <option value="1">Yes</option>
+            <option value="2">No</option> -->
+              </select>
+            </div>
+            <small
+              *ngIf="choice.touched && choice.errors?.['required']"
+              style="color: red"
+              >Please select your choice</small
+            >
+          </div>
+  
+          <div class="form-group mt-2">
+            <!-- <button [disabled]="registraionForm.invalid" class="btn btn-primary">
+              Submit
+            </button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

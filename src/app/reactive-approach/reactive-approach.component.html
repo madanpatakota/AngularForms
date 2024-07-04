@@ -1,0 +1,73 @@
+<div style="margin: 50px; padding: 50px">
+  <h3>Reactive approaach</h3>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="userDetailsFormGroup" (ngSubmit)="onSubmit()">
+        <div>
+          <div class="form-group">
+            <label class="col-form-label">First Name *</label>
+
+            <!-- touched , untouched , pristine , dirty , valid or invalid -->
+            <!--HTML  required , minlength , maxlength , min , max , pattern, type validator -->
+            <input
+              name="userFirstName"
+              type="text"
+              placeholder="First name"
+              class="form-control"
+              formControlName="userName"
+            />
+          </div>
+
+          <small
+            *ngIf="
+              userDetailsFormGroup.get('userName')?.touched &&
+              userDetailsFormGroup.get('userName')?.errors?.['required']
+            "
+            style="color: red"
+            >Please enter first name</small
+          >
+
+          <small
+            *ngIf="
+              userDetailsFormGroup.get('userName')?.touched &&
+              userDetailsFormGroup.get('userName')?.errors?.['minlength']
+            "
+            style="color: red"
+          >
+            Please enter atleast 3 charcters
+          </small>
+        </div>
+
+        <div>
+          <div class="form-group">
+            <label class="col-form-label">Select option *</label>
+            <select
+              name="choiceName"
+              class="form-select"
+              formControlName="choice"
+            >
+              <option value="" selected disabled>Select an option</option>
+              <option [value]="option.value" *ngFor="let option of optionsList">
+                {{ option.name }}
+              </option>
+              <!-- <option value="1">Yes</option>
+          <option value="2">No</option> -->
+            </select>
+          </div>
+          <small
+            *ngIf="
+          userDetailsFormGroup.get('choice')?.touched &&
+          userDetailsFormGroup.get('choice')?.errors?.['required']"
+            style="color: red"
+            >Please select your choice</small
+          >
+        </div>
+
+        <div class="form-group" style="margin-top: 20px">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
